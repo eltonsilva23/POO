@@ -1,1 +1,14 @@
-run = "set -e; csc Main.cs; mono Main.exe"
+run = "set -e; csc './aulas/lista_2_1.cs'; mono Main.exe"
+
+[env]
+DOTNET_NOLOGO = "1"
+DOTNET_CLI_TELEMETRY_OPTOUT = "1"
+
+[nix]
+channel = "stable-21_11"
+
+[packager]
+language = "dotnet"
+
+[packager.features]
+packageSearch = true
