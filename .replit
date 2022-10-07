@@ -1,4 +1,4 @@
-run = "set -e; csc './aulas/lista_2_1.cs'; mono Main.exe"
+run = "set -e; csc './listas/29.09.22/q5.cs' /out:Main.exe; mono Main.exe"
 
 [env]
 DOTNET_NOLOGO = "1"
