@@ -1,4 +1,6 @@
-run = "set -e; csc './listas/29.09.22/q5.cs' /out:Main.exe; mono Main.exe"
+run = "set -e; csc ./Main.cs /out:Main.exe; mono Main.exe"
+
+hidden = ["Main.exe","README.md"]
 
 [env]
 DOTNET_NOLOGO = "1"
