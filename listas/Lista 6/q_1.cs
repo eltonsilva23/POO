@@ -1,19 +1,22 @@
+//1151 - 
 using System;
 using System.Linq;
 
 public class Program{
-  public static void Main() {
-    int num = int.Parse(Console.ReadLine());
-    int[] v = new int[num];
-    v[0]=0;
-    v[1]=1;
-    if (num==0) Console.WriteLine("0");
-    else if (num==1) Console.WriteLine("0,1");
-    else if (num>1){
-      for (int i = 2; i<=num; i++){
-        v[i] = v[i-2] + v[i-1];
+  public static void Main(){
+    int a = int.Parse(Console.ReadLine());
+    int[] b = new int[a];
+    if (a>=1) b[0]=0;
+    if (a>=2) {
+      b[1]=1;
+      for(int i = 2; i<a; i++){
+        b[i] = b[i-2]+b[i-1];
       }
-      Console.WriteLine(v[num-2]);
     }
+    for(int i = 0; i<a; i++){
+        Console.Write($"{b[i]}");
+        if (i<a-1) Console.Write(' ');
+      }
+    Console.Write("\n");
   }
 }
