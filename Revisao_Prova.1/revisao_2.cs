@@ -36,12 +36,12 @@ public class Program{
   public static void Main(){
     // nome da classe - nome de variavel - new(instancia) - classe 
     Triangulo t = new Triangulo();
-    t.SetBase1(double.Parse(Console.ReadLine()));
-    t.SetAltura(double.Parse(Console.ReadLine()));
+    t.base1 = double.Parse(Console.ReadLine());
+    t.altura = double.Parse(Console.ReadLine());
     //Sempre chamar a variavel(t.------)
     Console.WriteLine($"{t.CalcArea()}\n\n");    
-    Console.WriteLine(t.GetBase1());
-    Console.WriteLine(t.GetAltura());
+    Console.WriteLine(t.base1);
+    Console.WriteLine(t.altura);
     
   }
 }
