@@ -40,25 +40,25 @@ public class Pais{
   }
 
   public override string ToString(){
-    string s_nome = "Nome do Pais = " + this.nome;
-    string s_populacao = "Populacao = " + this.populacao;
-    string s_area = "Area = " + this.area;
-    return s_nome + "\n" + s_populacao + "\n" + s_area;
+    return $"Nome do Pais = {nome}\nPopulacao = {populacao}\nArea = {area}";
   }
+  //Ate aqui
 }
-public class Program  {
+public class Program{
   public static void Main(){
-    
     Pais p = new Pais();
+    Pais construtor = new Pais("Brasil", 20, 100)
     
-    for (int i=0; i<10; i++){
-      p.SetNome(Console.ReadLine());
-      p.SetPopulacao(int.Parse(Console.ReadLine()));
-      p.SetArea(double.Parse(Console.ReadLine()));
-      
-      Console.WriteLine(p.ToString());
-      Console.WriteLine("----------------");
-      Console.WriteLine($"Densidade = {p.Densidade()}\n-----");
-    }
+    p.SetNome(Console.ReadLine());
+    p.SetPopulacao(int.Parse(Console.ReadLine()));
+    p.SetArea(double.Parse(Console.ReadLine()));
+
+    Console.WriteLine($"{p.Densidade()}\n--------"); 
+    
+    Console.WriteLine($"{construtor.Densidade()}\n---------");    
+    Console.WriteLine(p.ToString());
+    Console.WriteLine("----------------");
+    Console.WriteLine(construtor.ToString());
+    //Ate aqui
   }
 }
