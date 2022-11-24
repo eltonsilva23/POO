@@ -1,64 +1,65 @@
 using System;
-using System.Linq;
+//using System.Globalization;
+//using System.Threading;
 
-public class Pais{
-  
-  private string nome = "Invalido";
-  private int populacao = 1;
-  private double area = 1;
+public class Paciente{
+  private string nome;
+  private string cpf;
+  private string telefone;
+  private DateTime nascimento;
 
-  public Pais(){}
-  
-  public Pais(string n, int p, double area){
-    if (n != " ") this.nome = n;
-    if (p>0) this.populacao = p;
-    if (area>0) this.area = area;    
-  }
-  
-  public void SetNome(string nome){
-   if (nome != " ") this.nome = nome;
-  }
-  public void SetPopulacao(int populacao){
-   if (populacao>0) this.populacao = populacao;
-  }
-  public void SetArea(double area){
-   if (area>0) this.area = area;
-  }
+  public Paciente() {}
 
-  public string GetNome(){
-    return nome;
-  }
-  public int GetPopulacao(){
-    return populacao;
-  }
-  public double GetArea(){
-    return area;
-  }
+  //Construtor
+  public Paciente(string n, string c, string t, DateTime nasc) {
+    this.nome = n;
+    this.cpf = c;
+    this.telefone = t;
+    this.nascimento = nasc;
+  } 
 
-  public double Densidade(){
-    return (populacao / area);
+  public string Idade(){
+    DateTime atual = DateTime.Now;
+    int anos = atual.Year - nascimento.Year;
+    int meses = atual.Month - nascimento.Month;
+    if (meses<0){
+      anos--;
+      meses +=12;
+    }
+    return 
+      anos.ToString() + " Ano(s) " +
+      meses.ToString() + " Mês(es)";
   }
 
   public override string ToString(){
-    string s_nome = "Nome do Pais = " + this.nome;
-    string s_populacao = "Populacao = " + this.populacao;
-    string s_area = "Area = " + this.area;
-    return s_nome + "\n" + s_populacao + "\n" + s_area;
+    return 
+      $"Nome: {nome}\n"+
+      $"CPF: {cpf}\n"+
+      $"Telefone: {telefone}\n"+
+      $"Data de Nascimento: {nascimento}";
   }
 }
-public class Program  {
+
+public class Program{
   public static void Main(){
+    //Thread.CurrentThread.CurrentCulture = 
+     // new CultureInfo("pt-BR");
+    Console.WriteLine(
+      "Digite Nome, CPF, telefone, Data (Formato:DD/MM/AAAA)"
+    );
+    Paciente p = new Paciente(
+      Console.ReadLine(),
+      Console.ReadLine(),
+      Console.ReadLine(),
+      DateTime.Parse(Console.ReadLine())
+    );
+
+    Console.WriteLine(p);
+    Console.WriteLine(p.Idade());
+
+    //DateTime hoje = DateTime.Now;
+
+    //Console.WriteLine(hoje.DayOfWeek);
     
-    Pais p = new Pais();
-    
-    for (int i=0; i<10; i++){
-      p.SetNome(Console.ReadLine());
-      p.SetPopulacao(int.Parse(Console.ReadLine()));
-      p.SetArea(double.Parse(Console.ReadLine()));
-      
-      Console.WriteLine(p.ToString());
-      Console.WriteLine("----------------");
-      Console.WriteLine($"Densidade = {p.Densidade()}\n-----");
-    }
   }
 }
